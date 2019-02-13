@@ -1,0 +1,166 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        {% block title %} Se connecter {% endblock %}
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--===============================================================================================-->
+        <link rel="icon" type="image/png" href="{{ asset('login/images/icons/favicon.ico') }}"/>
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('login/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('login/vendor/animate/animate.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('login/vendor/css-hamburgers/hamburgers.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('login/vendor/animsition/css/animsition.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('login/vendor/select2/select2.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('login/vendor/daterangepicker/daterangepicker.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('login/css/util.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('login/css/main.css') }}">
+
+        {#<style type="text/css">#}
+            {##username{#}
+                {#background-color:whitesmoke;#}
+                {#height: 10px;#}
+                {#padding: 15px;#}
+                {#width: 40%;#}
+
+            {#}#}
+            {##password{#}
+                {#background-color:whitesmoke;#}
+                {#height: 10px;#}
+                {#width: 40%;#}
+                {#padding: 15px;#}
+
+            {#}#}
+
+        {#</style>#}
+
+        <!--===============================================================================================-->
+    </head>
+
+    <body>
+
+    </body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-form-title" style="background-image: url('{{ asset('login/images/bg-01.jpg') }}');">
+					<span class="login100-form-title-1">
+						S'inscrire
+					</span>
+
+                </div>
+                {% trans_default_domain 'FOSUserBundle' %}
+<center>
+                {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'),'attr': {'novalidate': 'novalidate'}}) }}
+                   {{ form_row(form.nom) }}
+                   <div id="error_nom" style="font-size: 12px;margin-top: -20px"></div>
+                   {{ form_row(form.prenom) }}
+                     <div id="error_prenom" style="font-size: 12px;margin-top: -20px"></div>
+                   {{ form_row(form.username) }}
+                     <div id="error_username" style="font-size: 12px;margin-top: -20px"></div>
+                   {{ form_row(form.email) }}
+                     <div id="error_email" style="font-size: 12px;margin-top: -20px"></div>
+                   {{ form_row(form.adresse) }}
+                    <div id="error_adr" style="font-size: 12px;margin-top: -20px"></div>
+                   {{ form_row(form.plainPassword) }}
+                <div>
+                    <input class="btn btn--primary" id="signup-btn" type="submit" value="{{ 'registration.submit'|trans }}" />
+                </div>
+                {{ form_end(form) }}
+</center>
+        </div>
+    </div>
+        <style type="text/css">
+            #fos_user_registration_form_email{
+                border:none;
+                border-bottom: 1.5px solid #1b1e21;
+                height: 10px;
+                padding: 15px;
+                width: 40%;
+
+            }
+            #fos_user_registration_form_username{
+                border:none;
+                border-bottom: 1.5px solid #1b1e21;
+                height: 10px;
+                padding: 15px;
+                width: 40%;
+
+            }
+            #fos_user_registration_form_plainPassword_second{
+                border:none;
+                border-bottom: 1.5px solid #1b1e21;
+                height: 10px;
+                padding: 15px;
+                width: 40%;
+
+            }
+            #fos_user_registration_form_plainPassword_first{
+                border:none;
+                border-bottom: 1.5px solid #1b1e21;
+                height: 10px;
+                padding: 15px;
+                width: 40%;
+
+            }
+            #fos_user_registration_form_nom
+            {
+                border:none;
+                border-bottom: 1.5px solid #1b1e21;
+                height: 10px;
+                padding: 15px;
+                width: 40%;
+            }
+            #fos_user_registration_form_prenom
+            {
+                border:none;
+                border-bottom: 1.5px solid #1b1e21;
+                height: 10px;
+                padding: 15px;
+                width: 40%;
+            }
+            #fos_user_registration_form_adresse
+            {
+                border:none;
+                border-bottom: 1.5px solid #1b1e21;
+                height: 10px;
+                padding: 15px;
+                width: 40%;
+            }
+        </style>
+
+    <!--===============================================================================================-->
+    <script src="{{ asset('login/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('login/vendor/animsition/js/animsition.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('login/vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ asset('login/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('login/vendor/select2/select2.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('login/vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('login/vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('login/vendor/countdowntime/countdowntime.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('login/js/main.js') }}"></script>
+     {#//for signup#}
+        <script src="{{ asset('js/Signup/verif.js') }}"></script>
+    </html>
+   
+{% endblock %}
+
+
