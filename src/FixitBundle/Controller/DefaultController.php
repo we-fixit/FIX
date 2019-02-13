@@ -10,4 +10,9 @@ class DefaultController extends Controller
     {
         return $this->render('@Fixit/Default/index.html.twig');
     }
+
+    public function helloword()
+    {
+        return;
+    }
 }
