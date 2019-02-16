@@ -10,9 +10,37 @@ class DefaultController extends Controller
     {
         return $this->render('@Fixit/Default/index.html.twig');
     }
-
-    public function helloword()
+    public function adminAction()
     {
-        return;
+
+        return $this->render('@Fixit/Default/admin.html.twig');
     }
+    public function contactAction()
+    {
+
+        return $this->render('@Fixit/Default/contact.html.twig');
+    }
+
+    public function aboutAction()
+    {
+
+        return $this->render('@Fixit/Default/about.html.twig');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

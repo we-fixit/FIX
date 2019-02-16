@@ -1,3 +1,15 @@
 fixit_homepage:
     path:     /home
     defaults: { _controller: FixitBundle:Default:index }
+email_avaibility:
+    path:     /userEmailVerification
+    defaults: { _controller: FixitBundle:Registration:checkEmail }
+fixit_admin:
+    path:     /admin
+    defaults: { _controller: FixitBundle:Default:admin }
+fixit_contact:
+    path:     /contact
+    defaults: { _controller: FixitBundle:Default:contact }
+fixit_about:
+    path:     /about
+    defaults: { _controller: FixitBundle:Default:about }

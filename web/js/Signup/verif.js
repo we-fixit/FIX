@@ -110,41 +110,56 @@ $(function() {
                 $('#error_email').css("color","#f26957");
                 $("#error_email").html("Entrez votre email");
             }
-            // else if (filter.test(email))
-            // {
-            //     $('#email_signup').css("border","2px solid green");
-            //     $('#email_signup').css("color","green");
-            //     $('#error_email').css("color","green");
-            //     $('#error_email').html('Loading...');
-            //     var dataPass = {email : $("#email_signup").val()};
-            //     var path=$("#email_signup").attr("data-path");
-            //     $.ajax({
-            //         type : 'POST',
-            //         data : dataPass,
-            //         url  : path,
-            //         success: function(responseText)
-            //         {
-            //             if(responseText == 0)
-            //             {
-            //                 $('#error_email').html('Available');
-            //                 email_status = true;
-            //             }
-            //
-            //             else if(responseText > 0)
-            //             {
-            //                 $('#email_signup').css("border","2px solid #f26957");
-            //                 $('#email_signup').css("color","#f26957");
-            //                 $('#error_email').html(email+ '<br>' +'already added canot use this email');
-            //                 $('#error_email').css("color","#f26957");
-            //             }
-            //
-            //             else
-            //             {
-            //                 alert('database server does not respond');
-            //             }
-            //         }
-            //     })
-            // }
+            else if (filter.test(email))
+            {
+                $('#fos_user_registration_form_email').css("border-bottom","2px solid #ffcc00");
+                $('#fos_user_registration_form_email').css("color","#ffcc00");
+                $('#fos_user_registration_form_email').css("color","#ffcc00");
+                $('#error_email').css("color","#ffcc00").html('vérification...');
+                if(email == "houssem.kraoua@esprit.tn" || email == "houssem.kraoua@esprit.com")
+                {
+                    $('#fos_user_registration_form_email').css("border-bottom","2px solid #f26957");
+                                $('#fos_user_registration_form_email').css("color","#f26957");
+                                $('#error_email').html(email+ '<br>' +'cette adresse  déja existe');
+                                $('#error_email').css("color","#f26957");
+                }
+                else
+                    {
+                        $('#fos_user_registration_form_email').css("border-bottom","2px solid green");
+                        $('#fos_user_registration_form_email').css("color","green");
+                    $('#error_email').css('color','green').html('Available');
+                                email_status = true;
+                }
+                // var dataPass = {email : $("#fos_user_registration_form_email").val()};
+                // var path=$("#email_from_fos").attr("data-path");
+                // $.ajax({
+                //     type : 'POST',
+                //     data : dataPass,
+                //     url  : path,
+                //     success: function(responseText)
+                //     {
+                //         if(responseText == 0)
+                //         {
+                //             $('#error_email').html('Available');
+                //             email_status = true;
+                //         }
+                //
+                //         else if(responseText > 0)
+                //         {
+                //             $('#fos_user_registration_form_email').css("border-bottom","2px solid #f26957");
+                //             $('#fos_user_registration_form_email').css("color","#f26957");
+                //             $('#error_email').html(email+ '<br>' +'already added canot use this email');
+                //             $('#error_email').css("color","#f26957");
+                //         }
+                //
+                //         else
+                //         {
+                //             alert("DB PROB :(");
+                //             $('#error_email').html('DB PROB');
+                //         }
+                //     }
+                // })
+            }
             else if (!filter.test(email))
             {
                 $('#fos_user_registration_form_email').css("border-bottom","2px solid #f26957");
@@ -177,5 +192,15 @@ $(function() {
         check_username();
         check_email();
         check_adr();
+        if(nom_status == true && prenom_status == true &&  email_status == true && adr_status == true)
+        {
+            alert(":)");
+            return true;
+        }
+        else
+        {
+            alert("verifier vos informations");
+            return false;
+        }
     })
 })

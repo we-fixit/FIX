@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="{{ asset('css/base.css')}}">
         <link rel="stylesheet" href="{{ asset('css/vendor.css')}}">
         <link rel="stylesheet" href="{{ asset('css/main.css')}}">
+        <link rel="stylesheet" href="{{ asset('css/font-awesome/css/fontawesome-all.css')}}">
 
         <script src="{{ asset('js/modernizr.js') }}"></script>
 
@@ -21,7 +22,7 @@
         </style>
     </head>
 
-    <header id="header" class="s-header header" style="position: fixed;z-index: 1;transition: all .5s;">
+    <header id="header" class="s-header header" style="position: fixed;z-index: 997;transition: all .5s;">
         <div class="header__logo">
             <a class="logo" href="{{ path('homepage') }}">
                 <img src="{{ asset('images/fixit1.jpg')}}"  style="margin-left: -80px" alt="Homepage" id="homepage" >
@@ -73,14 +74,28 @@
                     </ul>
                 </li>
                 <li><a href="style-guide.html" title="">Espace entreprise</a></li>
-                <li><a href="page-about.html" title="">à propos</a></li>
-                <li><a href="page-contact.html" title="">Contact</a></li>
+
+                <li><a href="{{ path('fixit_about') }}" title="">à propos</a></li>
+
+                <li><a href="{{ path('fixit_contact') }}" title="">Contact</a></li>
                 {#f warka#}    {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                     <li><a href="{{ path('fos_user_security_login') }}" title="">se connecter</a></li>
+
                     <li><a href="{{ path('fos_user_registration_register') }}" title="">s'inscrire</a></li>
 
                     {% else %}
-                        <li><a href="{{ path('fos_user_security_logout') }}" title="">se deconnecter</a></li>
+
+
+                    <li><a href="{{ path('fos_user_profile_show') }}" title="">utilisateur: {{ app.user.username }}
+                            <ul class="sub-menu">
+                                <li><a href="{{ path('fos_user_security_logout') }}" title="">se deconnecter</a></li>
+                                <li><a href="{{ path('fos_user_profile_show') }}" title="">Profile</a></li>
+                            </ul>
+                        </a>
+
+                    </li>
+
+
                 {% endif %}
 
 
@@ -88,16 +103,14 @@
             <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
         </nav>
     </header>
+
     {% block body %}
-        <body id="top">
-        <div id="preloader">
-            <div id="loader" class="dots-fade">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div></body>{% endblock %}
-{% block footer %}
+        {% endblock %}
+<style>
+    .s-footer{background-color: #0d134a;
+        padding-top: 10.2rem;
+        padding-bottom: 10.2rem;}
+</style>
         <footer class="s-footer">
             <div class="s-footer__main">
                 <div class="row">
@@ -154,7 +167,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 <a class="smoothscroll" title="Back to Top" href="#top"></a>
             </div>
         </footer>
-{% endblock %}
+
         {% block javascripts %}
             <script src="{{ asset('js/jquery-3.2.1.min.js')}}"></script>
             <script src="{{ asset('js/plugins.js')}}"></script>
@@ -171,7 +184,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         {% endblock %}
     <script>
         $(window).on("scroll", function() {
-            if($(window).scrollTop() > 50) {
+            if($(window).scrollTop > 50) {
                 $("#header").addClass("active");
             } else {
                 //remove the background property so it comes transparent again (defined in your css)

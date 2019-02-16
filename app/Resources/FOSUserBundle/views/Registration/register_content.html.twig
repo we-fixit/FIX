@@ -27,7 +27,102 @@
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="{{ asset('login/css/util.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('login/css/main.css') }}">
-
+        <style>
+            #align_allsections
+            {
+                display: flex;
+                justify-content: center;
+            }
+            #section1
+            {
+                position: relative;
+                right: 35px;
+                margin-top: 20px;
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+            }
+            #section2
+            {
+                position: relative;
+                left: 35px;
+                margin-top: 20px;
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+            }
+            /*form cadre*/
+            .limiter
+            {
+                position: relative;
+                top: 40px;
+            }
+            /*input=user on click(focus)*/
+            #fos_user_registration_form_email,
+            #fos_user_registration_form_username,
+            #fos_user_registration_form_plainPassword_second,
+            #fos_user_registration_form_plainPassword_first,
+            #fos_user_registration_form_nom,
+            #fos_user_registration_form_prenom,
+            #fos_user_registration_form_adresse
+            {
+                font-size: 15px;
+                line-height: 1.5;
+                color: #666666;
+                display: block;
+                width: 100%;
+                background: #e6e6e6;
+                height: 50px;
+                border-radius: 10px;
+                padding: 0 25px 0 60px;
+                border: none;
+                transition: all .5s;
+            }
+            /*input=user role*/
+            #fos_user_registration_form_roles
+            {
+                font-size: 15px;
+                line-height: 1.5;
+                color: #666666;
+                display: block;
+                width: 100%;
+                background: #e6e6e6;
+                height: 50px;
+                border-radius: 10px;
+                padding: 0 25px 0 60px;
+                border: none;
+                transition: all .5s;
+                padding-top: 5px;
+                overflow: hidden;
+            }
+            /*inputs=user*/
+            #fos_user_registration_form_email:focus,
+            #fos_user_registration_form_username:focus,
+            #fos_user_registration_form_plainPassword_second:focus,
+            #fos_user_registration_form_plainPassword_first:focus,
+            #fos_user_registration_form_nom:focus,
+            #fos_user_registration_form_prenom:focus,
+            #fos_user_registration_form_adresse:focus
+            {
+                border: 2px solid #0fc491;
+                transition: all .5s;
+            }
+            /*input=user signup btn*/
+            #signup-btn
+            {
+                margin-top: 20px;
+                              font-size: 10px;
+                              line-height: 1.5;
+                              color: #fff;
+                              display: block;
+                              width: 80%;
+                              background: #0d1248;
+                              height: 50px;
+                              border-radius: 10px;
+                              padding: 0 25px 0 60px;
+                              border: none;
+            }
+        </style>
         {#<style type="text/css">#}
             {##username{#}
                 {#background-color:whitesmoke;#}
@@ -49,9 +144,7 @@
         <!--===============================================================================================-->
     </head>
 
-    <body>
 
-    </body>
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
@@ -63,18 +156,33 @@
                 </div>
                 {% trans_default_domain 'FOSUserBundle' %}
 <center>
+    {#"#}
                 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'),'attr': {'novalidate': 'novalidate'}}) }}
-                   {{ form_row(form.nom) }}
-                   <div id="error_nom" style="font-size: 12px;margin-top: -20px"></div>
-                   {{ form_row(form.prenom) }}
-                     <div id="error_prenom" style="font-size: 12px;margin-top: -20px"></div>
-                   {{ form_row(form.username) }}
-                     <div id="error_username" style="font-size: 12px;margin-top: -20px"></div>
-                   {{ form_row(form.email) }}
-                     <div id="error_email" style="font-size: 12px;margin-top: -20px"></div>
-                   {{ form_row(form.adresse) }}
-                    <div id="error_adr" style="font-size: 12px;margin-top: -20px"></div>
-                   {{ form_row(form.plainPassword) }}
+    <div id="align_allsections">
+        <div id="section1">
+            {#section1#}
+            {{ form_row(form.nom ) }}
+            <div id="error_nom" style="font-size: 12px;margin-top: -20px"></div>
+            {{ form_row(form.prenom) }}
+            <div id="error_prenom" style="font-size: 12px;margin-top: -20px"></div>
+            {{ form_row(form.username) }}
+            <div id="error_username" style="font-size: 12px;margin-top: -20px"></div>
+            {{ form_row(form.email) }}
+            <input type="text" id="email_from_fos" data-path="{{path('email_avaibility')}}" style="display: none">
+            <div id="error_email" style="font-size: 12px;margin-top: -20px"></div>
+            {{ form_row(form.roles) }}
+            {#section1#}
+        </div>
+        <div id="section2">
+            {#section2#}
+            {{ form_row(form.adresse) }}
+            <div id="error_adr" style="font-size: 12px;margin-top: -20px"></div>
+            {{ form_row(form.plainPassword) }}
+            {#section2#}
+        </div>
+    </div>
+
+
                 <div>
                     <input class="btn btn--primary" id="signup-btn" type="submit" value="{{ 'registration.submit'|trans }}" />
                 </div>
@@ -82,64 +190,6 @@
 </center>
         </div>
     </div>
-        <style type="text/css">
-            #fos_user_registration_form_email{
-                border:none;
-                border-bottom: 1.5px solid #1b1e21;
-                height: 10px;
-                padding: 15px;
-                width: 40%;
-
-            }
-            #fos_user_registration_form_username{
-                border:none;
-                border-bottom: 1.5px solid #1b1e21;
-                height: 10px;
-                padding: 15px;
-                width: 40%;
-
-            }
-            #fos_user_registration_form_plainPassword_second{
-                border:none;
-                border-bottom: 1.5px solid #1b1e21;
-                height: 10px;
-                padding: 15px;
-                width: 40%;
-
-            }
-            #fos_user_registration_form_plainPassword_first{
-                border:none;
-                border-bottom: 1.5px solid #1b1e21;
-                height: 10px;
-                padding: 15px;
-                width: 40%;
-
-            }
-            #fos_user_registration_form_nom
-            {
-                border:none;
-                border-bottom: 1.5px solid #1b1e21;
-                height: 10px;
-                padding: 15px;
-                width: 40%;
-            }
-            #fos_user_registration_form_prenom
-            {
-                border:none;
-                border-bottom: 1.5px solid #1b1e21;
-                height: 10px;
-                padding: 15px;
-                width: 40%;
-            }
-            #fos_user_registration_form_adresse
-            {
-                border:none;
-                border-bottom: 1.5px solid #1b1e21;
-                height: 10px;
-                padding: 15px;
-                width: 40%;
-            }
-        </style>
 
     <!--===============================================================================================-->
     <script src="{{ asset('login/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
@@ -158,9 +208,9 @@
     <!--===============================================================================================-->
     <script src="{{ asset('login/js/main.js') }}"></script>
      {#//for signup#}
-        <script src="{{ asset('js/Signup/verif.js') }}"></script>
+        <script src="{{ asset('js/Signup/verif.js') }}"></script></div>
     </html>
-   
+
 {% endblock %}
 
 

@@ -10,4 +10,13 @@ namespace FixitBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+
+//    public function check_email_forSignUp($email)
+//    {
+//        $qb = $this->getEntityManager()->createQuery("SELECT user FROM
+//             FixitBundle:user user where user.email=:email")
+//            -> setParameters (array ('email'=> $email));
+//        return $qb->getResult();
+//    }
+
 }

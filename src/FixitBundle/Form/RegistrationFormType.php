@@ -9,7 +9,10 @@
 namespace FixitBundle\Form;
 
 
+use FixitBundle\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use FOS\UserBundle\Form\Type\RegistrationFormType as BaseRegistrationFormType;
 class RegistrationFormType extends  AbstractType
@@ -19,7 +22,15 @@ class RegistrationFormType extends  AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('adresse');
+            ->add('adresse')
+            ->add('roles', ChoiceType::class, array('label' => 'Type utilisateur ',
+                'choices' => array(
+                'PRESTATAIRE' => 'ROLE_PRESTATAIRE',
+                'CLIENT' => 'ROLE_CLIENT'),
+                'required' => true,
+                'multiple' => true,))
+
+        ;
     }
 
     public function getParent()

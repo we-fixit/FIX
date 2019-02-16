@@ -35,3 +35,12 @@ services:
         class: FixitBundle\Form\RegistrationFormType
         tags:
           -{ name: form.type }
+    app.profile.form.type:
+        class: FixitBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+        - { name: form.type }
+
+    redirect.after.login:
+        class: FixitBundle\Listener\AfterLoginRedirection
+        arguments: ['@router']
