@@ -1,7 +1,3 @@
-news:
-    resource: "@newsBundle/Resources/config/routing.yml"
-    prefix:   /news
-
 fixit:
     resource: "@FixitBundle/Resources/config/routing.yml"
     prefix:   /
