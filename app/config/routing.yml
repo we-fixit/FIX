@@ -1,10 +1,14 @@
-news:
-    resource: "@newsBundle/Resources/config/routing.yml"
-    prefix:   /news
+services_categories:
+    resource: "@ServicesBundle/Controller/CategoriesController.php"
+    type:     annotation
+
+services:
+    resource: "@ServicesBundle/Resources/config/routing.yml"
+    prefix:   /services
 
 fixit:
     resource: "@FixitBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /fixit
 
 app:
     resource: '@AppBundle/Controller/'

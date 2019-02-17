@@ -51,7 +51,7 @@
         <nav class="header__nav-wrap">
             <h2 class="header__nav-heading h6">Navigate to</h2>
             <ul class="header__nav">
-                <li><a href="style-guide.html" title="">Actualité</a></li>
+                <li><a href="#" title="">Actualité</a></li>
 
                 <li class="has-children">
 
@@ -105,12 +105,18 @@
     </header>
 
     {% block body %}
+        <style>
+            body{
+                background-color: white;
+            }
+        </style>
         {% endblock %}
 <style>
     .s-footer{background-color: #0d134a;
-        padding-top: 10.2rem;
-        padding-bottom: 10.2rem;}
+        padding-top: 20px;
+        padding-bottom: 20px;}
 </style>
+
         <footer class="s-footer">
             <div class="s-footer__main">
                 <div class="row">
@@ -155,10 +161,10 @@
                     </div>
                     <div class="col-six">
                         <div class="s-footer__copyright">
-<span>
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | LogicQuery
+                  <span>
+                         Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | LogicQuery
 
-</span>
+                   </span>
                         </div>
                     </div>
                 </div>

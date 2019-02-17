@@ -1,6 +1,6 @@
 <?php
 
-namespace newsBundle\Controller;
+namespace ServicesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -8,6 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('newsBundle:Default:index.html.twig');
+        return $this->render('@ServicesBundle/Default/index.html.twig');
     }
 }
