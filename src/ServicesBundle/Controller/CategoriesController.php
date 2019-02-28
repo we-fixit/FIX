@@ -89,7 +89,7 @@ class CategoriesController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('categories_edit', array('id' => $category->getId()));
+            return $this->redirectToRoute('categories_index', array('id' => $category->getId()));
         }
 
         return $this->render('@Services/categories/edit.html.twig', array(
@@ -102,7 +102,7 @@ class CategoriesController extends Controller
     /**
      * Deletes a category entity.
      *
-     * @Route("/{id}", name="categories_delete")
+     * @Route("delete/{id}", name="categories_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Categories $category)
@@ -124,7 +124,7 @@ class CategoriesController extends Controller
      *
      * @param Categories $category The category entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return \Symfony\Component\Form\FormInterface The form
      */
     private function createDeleteForm(Categories $category)
     {

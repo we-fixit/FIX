@@ -4,6 +4,8 @@ imports:
     - { resource: services.yml }
     - { resource: "@FixitBundle/Resources/config/services.yml" }
     - { resource: "@ServicesBundle/Resources/config/services.yml" }
+    - { resource: "@ReclamationBundle/Resources/config/services.yml" }
+    - { resource: "@OpinionBundle/Resources/config/services.yml" }
 
 
 
@@ -11,7 +13,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-
+    images_directory: '%kernel.project_dir%/web/uploads/images'
 framework:
     templating:
         engines: ['twig']

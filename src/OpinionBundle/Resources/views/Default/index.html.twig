@@ -1,0 +1,56 @@
+{% extends '::Admin.html.twig' %}
+{% block body %}
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+<script type="application/javascript">
+Highcharts.chart('container', {
+chart: {
+plotBackgroundColor: null,
+plotBorderWidth: null,
+plotShadow: false,
+type: 'pie'
+},
+title: {
+text: 'Statistique de l evaluation du site'
+},
+tooltip: {
+pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+},
+plotOptions: {
+pie: {
+allowPointSelect: true,
+cursor: 'pointer',
+dataLabels: {
+enabled: false
+},
+showInLegend: true
+}
+},
+series: [{
+name: 'Brands',
+colorByPoint: true,
+data: [
+ {
+name: '1Star',
+y: {{data[0][1]}}
+}, {
+name: '2 Stars',
+y: {{data[1][1]}}
+}, {
+name: '3 Stars',
+y: {{data[2][1]}}
+}, {
+name: '4 Stars',
+y: {{data[3][1]}}
+}, {
+    name: '5 Stars',
+    y: {{data[4][1]}}
+}]
+}]
+});
+</script>
+{% endblock %}

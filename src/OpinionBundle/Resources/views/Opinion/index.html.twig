@@ -1,0 +1,96 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title">Table des Reclamations</strong>
+                        </div>
+                        <div class="card-body">
+                            <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                <thead>
+                                <tr>
+
+                                    <th>Contenu</th>
+                                    <th>Note</th>
+                                    <th>Iduser</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {% for opinion in opinions %}
+                                    <tr>
+
+                                        <td>{{ opinion.contenu }}</td>
+                                        <td>{{ opinion.note }}</td>
+                                        <td>{{ opinion.idUser }}</td>
+                                        <td>
+                                            <ul>
+
+                                                <button>
+                                                    <a href="{{ path('opinion_edit', { 'idOp': opinion.idOp }) }}">Edit</a>
+                                                </button>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#bootstrap-data-table-export').DataTable();
+        } );
+    </script>
+    {#<h1>Opinions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idop</th>
+                <th>Contenu</th>
+                <th>Note</th>
+                <th>Iduser</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for opinion in opinions %}
+            <tr>
+                <td><a href="{{ path('opinion_show', { 'idOp': opinion.idOp }) }}">{{ opinion.idOp }}</a></td>
+                <td>{{ opinion.contenu }}</td>
+                <td>{{ opinion.note }}</td>
+                <td>{{ opinion.idUser }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('opinion_show', { 'idOp': opinion.idOp }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('opinion_edit', { 'idOp': opinion.idOp }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('opinion_new') }}">Create a new opinion</a>
+        </li>
+    </ul>#}
+{% endblock %}

@@ -11,6 +11,8 @@
 
 namespace FixitBundle\Form;
 
+use ServicesBundle\Entity\Categories;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -27,7 +29,8 @@ class ProfileFormType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('adresse')
-
+            ->add('categorie',EntityType::class,array('class'=>Categories::class,'choice_label'=>'libelle'
+            ))
 
         ;
     }

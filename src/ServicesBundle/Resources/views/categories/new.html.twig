@@ -1,7 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'Admin.html.twig' %}
 
 {% block body %}
-    <h1>Category creation</h1>
+    <center>
+    <h1>Ajouter categorie</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -10,7 +11,8 @@
 
     <ul>
         <li>
-            <a href="{{ path('categories_index') }}">Back to the list</a>
+            <a href="{{ path('categories_index') }}">retour à la liste</a>
         </li>
     </ul>
+    </center>
 {% endblock %}

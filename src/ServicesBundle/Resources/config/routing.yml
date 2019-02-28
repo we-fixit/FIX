@@ -1,3 +1,9 @@
-services_homepage:
-    path:     /
-    defaults: { _controller: ServicesBundle:Default:index }
+elec_show:
+    path:     /elec_show
+    defaults: { _controller: ServicesBundle:ServiceCat:elec_show }
+details_show:
+    path:     /details_show
+    defaults: { _controller: ServicesBundle:ServiceCat:Standard }
+auto_admin:
+    path:     /auto/{id}
+    defaults: { _controller: ServicesBundle:Services:adminautorise }

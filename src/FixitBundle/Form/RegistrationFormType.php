@@ -10,6 +10,7 @@ namespace FixitBundle\Form;
 
 
 use FixitBundle\Entity\User;
+use ServicesBundle\Entity\Categories;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -20,6 +21,8 @@ class RegistrationFormType extends  AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('categorie',EntityType::class,array('class'=>Categories::class,'choice_label'=>'libelle',
+            ))
             ->add('nom')
             ->add('prenom')
             ->add('adresse')

@@ -1,8 +1,23 @@
-{% extends 'base.html.twig' %}
+{% extends 'Admin.html.twig' %}
 
 {% block body %}
-    <center>
-    <h1>Category edit</h1>
+    <center> <h1>Category edit</h1></center>
+<br>
+<br>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header"><strong>Espace</strong><small> Admin</small></div>
+            <div class="card-body card-block">
+                {{ form_start(edit_form) }}
+                <div class="form-group"><label for="company" class=" form-control-label">Libelle</label>{{ form_widget(edit_form.libelle,{'attr':{'placeholder':'Libelle','class':'form-control'}}) }}</div>
+
+
+            <center><input type="submit" value="Edit" /></center>
+        </div>
+            {{ form_end(edit_form) }}
+    </div>
+    {#<center>
+
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
@@ -19,5 +34,5 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
-    </center>
+    </center>#}
 {% endblock %}

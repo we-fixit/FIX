@@ -13,3 +13,18 @@ fixit_contact:
 fixit_about:
     path:     /about
     defaults: { _controller: FixitBundle:Default:about }
+fixit_electricite:
+    path:     /electricite
+    defaults: { _controller: FixitBundle:Default:elect }
+fixit_mec:
+    path:     /mecanique
+    defaults: { _controller: FixitBundle:Default:mec }
+fixit_tel:
+    path:     /tel
+    defaults: { _controller: FixitBundle:Default:tel }
+fixit_elecm:
+    path:     /elecm
+    defaults: { _controller: FixitBundle:Default:elecm }
+fixit_plomberie:
+    path:     /plom
+    defaults: { _controller: FixitBundle:Default:plom }

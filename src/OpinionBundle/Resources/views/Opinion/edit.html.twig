@@ -1,0 +1,22 @@
+{% extends '::Admin.html.twig' %}
+
+{% block body %}
+   <center> <h1>Opinion edit</h1></center>
+<br><br><center>
+    {{ form_start(edit_form) }}
+      commentaire:  {{ form_widget(edit_form) }}
+
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+        <li>
+            <a href="{{ path('opinion_index') }}">Retour à la liste</a>
+        </li>
+
+    </ul></center>
+{% endblock %}

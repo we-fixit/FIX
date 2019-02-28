@@ -13,6 +13,62 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User extends BaseUser
 {
     /**
+     * @return \ServicesBundle\Entity\Services
+     */
+    public function getServices()
+    {
+        return $this->services;
+    }
+
+    /**
+     * @param \ServicesBundle\Entity\Services $services
+     */
+    public function setServices($services)
+    {
+        $this->services = $services;
+    }
+
+
+
+    /**
+     * @var \ServicesBundle\Entity\Services
+     *
+     * @ORM\ManyToOne(targetEntity="ServicesBundle\Entity\Services")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_services", referencedColumnName="id")
+     * })
+     */
+
+
+    private $services;
+    /**
+     * @return \ServicesBundle\Entity\Categories
+     */
+    public function getCategorie()
+    {
+        return $this->Categorie;
+    }
+
+    /**
+     * @param \ServicesBundle\Entity\Categories $Categorie
+     */
+    public function setCategorie($Categorie)
+    {
+        $this->Categorie = $Categorie;
+    }
+
+    /**
+     * @var \ServicesBundle\Entity\Categories
+     *
+     * @ORM\ManyToOne(targetEntity="ServicesBundle\Entity\Categories")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_categorie", referencedColumnName="id")
+     * })
+     */
+
+
+    private $Categorie;
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -29,6 +85,13 @@ class User extends BaseUser
      */
     protected  $nom;
 
+    /**
+     * @ORM\Column(name="view", type="integer")
+     *
+     * @Assert\NotBlank(message="", groups={"Registration", "Profile"})
+     *
+     */
+    protected  $view;
     /**
      * @ORM\Column(type="string", length=255)
      *
@@ -63,6 +126,7 @@ class User extends BaseUser
     /**
      * @return mixed
      */
+
     public function getPrenom()
     {
         return $this->prenom;
@@ -105,5 +169,28 @@ class User extends BaseUser
     {
         $this->nom = $nom;
     }
-}
 
+    /**
+     * Set view
+     *
+     * @param integer $view
+     *
+     * @return User
+     */
+    public function setView($view)
+    {
+        $this->view = $view;
+
+        return $this;
+    }
+
+    /**
+     * Get view
+     *
+     * @return integer
+     */
+    public function getView()
+    {
+        return $this->view;
+    }
+}

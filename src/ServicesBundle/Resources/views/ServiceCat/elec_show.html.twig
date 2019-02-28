@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ services[0].categorie.libelle }}{% endblock %}
+
+{% block body %}
+
+
+<br><br><br>
+<div class="row entries-wrap add-top-padding wide">
+    <div class="entries">
+        {% for service in services %}
+            {% if service.autorise==1 %}
+        <article class="col-block">
+
+            <div class="item-entry" data-aos="zoom-in">
+                <div >
+                    <a href="{{ path('details_show',{ 'id': service.id }) }}" class="item-entry__thumb-link">
+                        <img src="{{ asset('uploads/images/') ~ service.image }} ">
+
+                    </a>
+                </div>
+
+                <div class="item-entry__text">
+                    <div class="item-entry__cat">
+                        <a href="{{ path('elec_show',{ 'cat': service.categorie.libelle }) }}" class="item-entry__thumb-link">{{ service.categorie.libelle }}</a>
+                    </div>
+
+
+                    <p class="item-entry__title"> <a href="{{ path('details_show',{ 'id': service.id }) }}" class="item-entry__thumb-link"> Prestaraire:{{ service.user.nom }} {{ service.user.prenom }}</a></p>
+
+
+                    <div class="item-entry__date">
+                        <a href="{{ path('details_show',{ 'id': service.id }) }}" class="item-entry__thumb-link">
+                            {% if service.date %}{{ service.date|date('Y-m-d') }}{% endif %}</a>
+                    </div>
+                </div>
+            </div> <!-- item-entry -->
+
+        </article> <!-- end article -->
+            {% endif %}
+        {% endfor %}
+    </div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

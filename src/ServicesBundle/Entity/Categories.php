@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Categories
 {
+
     /**
      * @var int
      *
@@ -28,7 +29,12 @@ class Categories
      */
     private $libelle;
 
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255)
+     */
+    private $image;
     /**
      * Get id
      *
@@ -62,5 +68,34 @@ class Categories
     {
         return $this->libelle;
     }
-}
 
+    public function __toString()
+    {
+        return $this->getLibelle();
+    }
+
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Categories
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+}

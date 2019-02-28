@@ -1,0 +1,108 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title">Table des Reclamations</strong>
+                        </div>
+                        <div class="card-body">
+                            <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>IdRec</th>
+                                    <th>Topic</th>
+                                    <th>Nom prestaire qui a étè reclamé</th>
+                                    <th>Message</th>
+                                    <th>Datarec</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for reclamation in reclamations %}
+                                        <tr>
+                                            <td><a href="{{ path('reclamation_edit_admin', { 'id': reclamation.id }) }}">{{ reclamation.id }}</a></td>
+                                            <td>{{ reclamation.topic }}</td>
+                                            <td>{{ reclamation.user.username }}</td>
+                                            <td>{{ reclamation.message }}</td>
+                                            <td>{% if reclamation.datarec %}{{ reclamation.datarec|date('Y-m-d') }}{% endif %}</td>
+                                            <td>{{ reclamation.status }}</td>
+
+
+
+                                        </tr>
+                                    {% endfor %}
+
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#bootstrap-data-table-export').DataTable();
+        } );
+    </script>
+{#<section id="styles" class="s-styles">
+
+    <div class="row add-bottom">
+
+        <div class="col-twelve">
+<br>
+
+            <h3>Vos reclamation</h3>
+
+
+            <div class="table-responsive">
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th>IdRec</th>
+                        <th>Topic</th>
+                        <th>Nom prestaire qui a étè reclamé</th>
+                        <th>Message</th>
+                        <th>Datarec</th>
+                        <th>Status</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for reclamation in reclamations %}
+                        <tr>
+                            <td><a href="{{ path('reclamation_show', { 'id': reclamation.id }) }}">{{ reclamation.id }}</a></td>
+                            <td>{{ reclamation.topic }}</td>
+                            <td>{{ reclamation.user.username }}</td>
+                            <td>{{ reclamation.message }}</td>
+                            <td>{% if reclamation.datarec %}{{ reclamation.datarec|date('Y-m-d') }}{% endif %}</td>
+                            <td>{{ reclamation.status }}</td>
+
+
+                            <td>
+                                <ul>
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <ul>
+
+                </ul><!-- end row -->
+   </div>
+        </div>
+    </div>
+</section>#}
+{% endblock %}

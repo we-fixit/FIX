@@ -164,20 +164,29 @@
                     {{ form_row(form.nom ) }}
                     {{ form_row(form.prenom ) }}
                     {{ form_row(form.adresse ) }}
+                    <i class="categorie">
+                     {{ form_row(form.categorie) }}
+                    </i>
 
                     {{ form_widget(form) }}
+                    {% if is_granted('ROLE_CLIENT') %}
+
+                        <script type="application/javascript" src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+                             <script>
+                        $(".categorie").hide();
+                        </script>
+
+
+                    {% endif %}
+
+
+
                     <div>
                         <input class="btn btn--primary" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
                     </div>
                     {{ form_end(form) }}
                 </div>
-                </center>
 
-
-
-
-
-                    {{ form_end(form) }}
                 </center>
             </div>
         </div>

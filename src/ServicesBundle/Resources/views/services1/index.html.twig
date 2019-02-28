@@ -1,0 +1,75 @@
+{% extends 'Admin.html.twig' %}
+
+{% block body %}
+
+
+    <h1>Liste des services</h1>
+
+
+
+
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title">Table des services</strong>
+                        </div>
+                        <div class="card-body">
+                            <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Titre</th>
+                                    <th>Description</th>
+                                    <th>Date</th>
+                                    <th>Telephone</th>
+                                    <th>Images</th>
+
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for service in services %}
+                                    <tr>
+                                        <td><a href="{{ path('services_show_admin', { 'id': service.id }) }}">{{ service.id }}</a></td>
+                                        <td>{{ service.titre }}</td>
+                                        <td>{{ service.description }}</td>
+                                        <td>{% if service.date %}{{ service.date|date('Y-m-d') }}{% endif %}</td>
+                                        <td>{{ service.telephone }}</td>
+                                        <td><img src="{{ asset('uploads/images/') ~ service.image }}" width="350" height="200" ></td>
+
+                                        <td>
+                                            <ul>
+                                                <p>
+                                                    <button>    <a href="{{ path('services_show_admin', { 'id': service.id }) }}">Afficher</a></button>
+                                                </p>
+                                                <p>   <button>  <a href="{{ path('services_edit_admin', { 'id': service.id }) }}">Modifier</a></button>
+                                                </p>
+                                                <p>
+                                                    <button><a href="{{ path('auto_admin', { 'id': service.id }) }}">Accepter</a></button>
+                                                    <button><a href="{{ path('services_delete_admin', { 'id': service.id }) }}">Refuser</a></button>
+
+                                                </p>
+                                            </ul>
+                                        </td>
+
+                                    </tr>
+                                {% endfor %}
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#bootstrap-data-table-export').DataTable();
+        } );
+    </script>
+{% endblock %}

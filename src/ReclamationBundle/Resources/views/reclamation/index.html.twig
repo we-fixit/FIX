@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<style>
+    #styles{
+        background-color: #f0f3f5;
+    }
+
+</style>
+<section id="styles" class="s-styles">
+
+    <div class="row add-bottom">
+
+        <div class="row half-bottom">
+<br>
+
+          <center>  <h3>Vos reclamation</h3></center>
+
+
+            <div class="table-responsive">
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th>IdRec</th>
+                        <th>Type Reclamation</th>
+                        <th>Nom prestaire qui a étè reclamé</th>
+                        <th>Votre Message</th>
+                        <th>Data Reclamation</th>
+                        <th>Statut actuel de votre reclamation</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for reclamation in reclamations %}
+                        {% if app.user.username!=reclamation.user.username %}
+                        <tr>
+                            <td><a href="{{ path('reclamation_show', { 'id': reclamation.id }) }}">{{ reclamation.id }}</a></td>
+                            <td>{{ reclamation.topic }}</td>
+                            <td>{{ reclamation.user.username }}</td>
+                            <td>{{ reclamation.message }}</td>
+                            <td>{% if reclamation.datarec %}{{ reclamation.datarec|date('Y-m-d') }}{% endif %}</td>
+                            <td>{{ reclamation.status }}</td>
+
+
+                            <td>
+                               </td>
+                              {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <ul>
+                    <center>
+                    <p>
+                        <a href="{{ path('reclamation_new') }}">Faire une autre Reclamation</a>
+                    </p></center>
+                </ul><!-- end row -->
+   </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<section id="styles" class="s-styles">
+
+    <div class="row add-bottom">
+
+        <div class="col-twelve">
+            <br>
+
+           <center> <h1>Reclamation envoyé</h1></center>
+
+
+            <div class="table-responsive">
+
+          <table>
+                <tbody>
+                       <tr>
+                <th>IdRec</th>
+                <td>{{ reclamation.id }}</td>
+                        </tr>
+                     <tr>
+                <th>Emetteur</th>
+                <td>{{ reclamation.user.username }} </td>
+                      </tr>
+                       <tr>
+                           <th>Topic</th>
+                           <td>{{ reclamation.topic }}</td>
+                       </tr>
+
+                      <tr>
+                <th>Message</th>
+                <td>{{ reclamation.message }}</td>
+                      </tr>
+                         <tr>
+                <th>Datarec</th>
+                <td>{% if reclamation.datarec %}{{ reclamation.datarec|date('Y-m-d') }}{% endif %}</td>
+                         </tr>
+                       <tr>
+                           <th>Status</th>
+                           <td>{{ reclamation.status }}</td>
+                       </tr>
+                       <tr>
+
+                                </tbody>
+                         </table>
+
+    {#<ul>
+        <li>
+            <a href="{{ path('reclamation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('reclamation_edit', { 'id': reclamation.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>#}</div></div></div></section>
+{% endblock %}

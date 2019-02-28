@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\Form\Type;
 
+use ServicesBundle\Entity\Categories;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use FOS\UserBundle\Form\Type\RegistrationFormType as BaseRegistrationFormType;
@@ -42,6 +43,7 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+
             ->add('nom',null, array('label' => 'form.nom', 'translation_domain' => 'FOSUserBundle'))
             ->add('email',array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'),
                 array(

@@ -1,10 +1,35 @@
+opinion_opinion:
+    resource: "@OpinionBundle/Controller/FeedbackController.php"
+    type:     annotation
+opinion:
+    resource: "@OpinionBundle/Resources/config/routing.yml"
+    prefix:   /opinion
+reclamation_reclamation1:
+    resource: "@ReclamationBundle/Controller/Reclamation1Controller.php"
+    type:     annotation
+
+reclamation_reclamation:
+    resource: "@ReclamationBundle/Controller/ReclamationController.php"
+    type:     annotation
+
+reclamation:
+    resource: "@ReclamationBundle/Resources/config/routing.yml"
+    prefix:   /reclamation
+
+services_services:
+    resource: "@ServicesBundle/Controller/ServicesController.php"
+    type:     annotation
+services_services1:
+    resource: "@ServicesBundle/Controller/Services1Controller.php"
+    type:     annotation
+
 services_categories:
     resource: "@ServicesBundle/Controller/CategoriesController.php"
     type:     annotation
 
-services:
+service:
     resource: "@ServicesBundle/Resources/config/routing.yml"
-    prefix:   /services
+    prefix:   /service
 
 fixit:
     resource: "@FixitBundle/Resources/config/routing.yml"

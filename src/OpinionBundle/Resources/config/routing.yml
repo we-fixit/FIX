@@ -1,0 +1,13 @@
+
+opinon_ajout:
+    path:     /ajouto
+    defaults: { _controller: OpinionBundle:Feedback:new }
+opinion_aff:
+    path:     /ajoutof
+    defaults: { _controller: OpinionBundle:Feedback:show }
+opinion_success:
+    path:     /success
+    defaults: { _controller: OpinionBundle:Feedback:Success }
+stat:
+    path:     /stat
+    defaults: { _controller: OpinionBundle:Default:chart }

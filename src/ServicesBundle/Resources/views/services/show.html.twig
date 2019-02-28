@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <style type="text/css" media="screen">
+        .s-styles {
+            background: #f0f0f0;
+            padding-top: 16.2rem;
+            padding-bottom: 12rem;
+        }
+
+        .s-styles .section-intro h1 {
+            margin-top: 0;
+        }
+        #reclamationbundle_reclamation_topic{
+            font-size: 2rem;
+
+        }
+    </style>
+<body id="top">
+    <section id="styles" class="s-styles">
+
+        <div class="row add-bottom">
+
+            <div class="col-twelve">
+                <br>
+
+               <center> <h3>Services Ajouté</h3></center>
+
+
+                <div class="table-responsive">
+
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Id Service</th>
+                            <th>Titre</th>
+                            <th>Description</th>
+                            <th>Date d'ajout</th>
+                            <th>Telephone</th>
+                            <th>Image</th>
+
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+                            <tr>
+                                <td> {{ service.id }}</td>
+                                <td>{{ service.titre }}</td>
+                                <td>{{ service.description }}</td>
+                                <td>{% if service.date %}{{ service.date|date('Y-m-d') }}{% endif %}</td>
+                                <td>{{ service.telephone }}</td>
+                                <td> <img src="{{ asset('uploads/images/') ~ service.image }}" width="200" height="200" ></td>
+
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <ul>
+                        <center>
+                        <p>
+                            <a href="{{ path('services_edit', { 'id': service.id }) }}">Modifier Services</a>
+
+                        </p></center>
+
+                    </ul><!-- end row -->
+                </div>
+            </div>
+        </div>
+    </section></body>
+
+{% endblock %}

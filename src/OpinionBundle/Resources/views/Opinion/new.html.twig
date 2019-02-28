@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+{% block title %}Rating{% endblock %}
+{% block body %}
+
+
+<style>
+
+    #opinion_contenu{
+        margin: 50px;
+        padding: 100px;
+
+    }
+</style>
+
+
+        <body id="top">
+
+        <div class="feedback main-grid-border">
+            <div class="container">
+    <br>
+               <center> <h2 class="w3-head">Evaluation</h2></center>
+                <div class="feed-back">
+
+
+                    <div class="feed-back-form">
+
+
+                        <div >
+                            <h3 >Donner nous votre avis et n'oublier pas de nous noter ! </h3>
+                            {{ form_start(form) }}
+                            {{ form_widget(form) }}
+                            <input id ="rating" type="number" name="note">
+                            <style>
+                                #rating{
+                                    display: none;
+
+                                }
+                            </style>
+                            <input class="btn--primary"type="submit" value="Confirmer" id="send">
+                            <div class="col-md-6">
+                                <label id ="err"  style="color: red;size: 10px"   >N'oubliez pas de nous noté </label>
+                                {% include"@Opinion/Opinion/rating.html.twig" %}
+                            </div>
+                            <script>
+                                $('#send').click(function(){
+                                    if($('#rating').val()=="")
+                                        $('#err').show();
+                                });
+                                $('.star').click(function (){
+                                    $('#err').hide();
+                                });
+                            </script>
+                            {{ form_end(form) }}
+                        </div>
+
+                    <br><br><br><br>
+                        <div>
+                            <a href="{{ path('opinion_aff') }}">
+                                <h2 style="color:cornflowerblue;text-decoration: underline" >   Ce que pensent les autres?</h2>
+                            </a></div>
+
+                    </div>
+                    <div >
+                        {{ render(controller('OpinionBundle:Feedback:NbreNote')) }}
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+                            </body>
+
+
+{% endblock %}

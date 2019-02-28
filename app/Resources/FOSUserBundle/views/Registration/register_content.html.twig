@@ -79,6 +79,22 @@
                 transition: all .5s;
             }
             /*input=user role*/
+            #fos_user_registration_form_categorie
+            {
+                font-size: 15px;
+                line-height: 1.5;
+                color: #666666;
+                display: block;
+                width: 100%;
+                background: #e6e6e6;
+                height: 50px;
+                border-radius: 10px;
+                padding: 0 25px 0 60px;
+                border: none;
+                transition: all .5s;
+                padding-top: 5px;
+                overflow: hidden;
+            }
             #fos_user_registration_form_roles
             {
                 font-size: 15px;
@@ -96,6 +112,7 @@
                 overflow: hidden;
             }
             /*inputs=user*/
+            #fos_user_registration_form_categorie:focus,
             #fos_user_registration_form_email:focus,
             #fos_user_registration_form_username:focus,
             #fos_user_registration_form_plainPassword_second:focus,
@@ -159,6 +176,7 @@
     {#"#}
                 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'),'attr': {'novalidate': 'novalidate'}}) }}
     <div id="align_allsections">
+
         <div id="section1">
             {#section1#}
             {{ form_row(form.nom ) }}
@@ -172,13 +190,16 @@
             <div id="error_email" style="font-size: 12px;margin-top: -20px"></div>
             {{ form_row(form.roles) }}
             {#section1#}
+
         </div>
         <div id="section2">
             {#section2#}
+            {{ form_row(form.categorie) }}
             {{ form_row(form.adresse) }}
             <div id="error_adr" style="font-size: 12px;margin-top: -20px"></div>
             {{ form_row(form.plainPassword) }}
             {#section2#}
+
         </div>
     </div>
 
@@ -209,6 +230,7 @@
     <script src="{{ asset('login/js/main.js') }}"></script>
      {#//for signup#}
         <script src="{{ asset('js/Signup/verif.js') }}"></script></div>
+
     </html>
 
 {% endblock %}

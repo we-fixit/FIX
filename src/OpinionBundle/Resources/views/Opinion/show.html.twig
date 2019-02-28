@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <body id="top">
+    <center>
+    <h1>Ce qui dit les autres a propos de nous!</h1>
+<br><br>
+        <section class="s-content s-content--top-padding s-content--narrow">
+<div >
+    <table style="display: block">
+        {% for o in opinion %}
+          <tr>
+           <td >
+
+               {% if(o.idUser==null) %}
+                   <label > <strong style="color:red">{{ 'Anonymous' }}</strong>
+                       <strong>said:</strong>  {{ o.contenu }}  <strong style="color:orange"> Rating: </strong> {{ o.note }}/5</label>
+            {% else %}
+                <label> <strong style ="color:blue">{{o.idUser }}</strong>
+                       <strong >said:</strong> {{ o.contenu }}   <strong style="color:orange"> Rating: </strong> {{ o.note }}/5</label>
+            {% endif %}
+               <hr width="60%">
+           </td>
+          </tr>
+        {% endfor %}
+    </table>
+
+</div>
+        </section></center>
+    </body>
+{% endblock %}

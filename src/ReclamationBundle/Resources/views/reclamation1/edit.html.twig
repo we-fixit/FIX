@@ -1,0 +1,49 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <center><h1>Modifier statut reclamation</h1></center>
+    {{ form_start(edit_form) }}
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header"><strong>Espace</strong><small> Admin</small></div>
+            <div class="card-body card-block">
+                <div class="form-group"><label for="company" class=" form-control-label">Message</label>{{ form_widget(edit_form.message,{'attr':{'placeholder':'sujet','class':'form-control'}}) }}</div>
+
+                <div class="form-group"><label for="street" class=" form-control-label">Topic:</label>{{ form_widget(edit_form.topic,{'attr':{'placeholder':'Description','class':'form-control'}}) }}</div>
+                <div class="form-group"><label for="street" class=" form-control-label">Nom prestataire qui a ete reclame:</label>{{ form_widget(edit_form.user,{'attr':{'placeholder':'Description','class':'form-control'}}) }}</div>
+
+                <div class="row form-group">
+                    <div class="col-8">
+                        <div class="form-group"><label for="city" class=" form-control-label">statut</label>
+                            <select name="status" class="form-control">
+                                <option value="Refuse">Refuse</option>
+                                <option value="En attente">En attente</option>
+                                <option value="Resolu">Resolu</option>
+                            </select>
+
+                            </div>
+                    </div>
+
+
+
+        </div>
+                 <center><input type="submit" value="Modifier" /></center>
+                {{ form_end(edit_form) }}        </div></div></div>
+    {#<h1>Reclamation edit</h1>
+
+    {{ form_start(edit_form) }}
+
+        <input type="submit" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('reclamation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>#}
+{% endblock %}

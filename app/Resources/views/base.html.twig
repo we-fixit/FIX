@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="{{ asset('css/main.css')}}">
         <link rel="stylesheet" href="{{ asset('css/font-awesome/css/fontawesome-all.css')}}">
 
+
         <script src="{{ asset('js/modernizr.js') }}"></script>
 
         <link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">
@@ -57,12 +58,13 @@
 
                     <a href="#0" title="">Services</a>
                     <ul class="sub-menu">
-                        <li><a href="category.html">Lifestyle</a></li>
-                        <li><a href="category.html">Health</a></li>
-                        <li><a href="category.html">Family</a></li>
-                        <li><a href="category.html">Management</a></li>
-                        <li><a href="category.html">Travel</a></li>
-                        <li><a href="category.html">Work</a></li>
+                        <li><a href="{{path('fixit_electricite')}}">Electronique</a></li>
+                        <li><a href="{{path('fixit_mec')}}">Mecanique</a></li>
+
+                        <li><a href="{{path('fixit_tel')}}">Telephonie</a></li>
+                        <li><a href="{{path('fixit_elecm')}}">Electromenager</a></li>
+                        <li><a href="{{path('fixit_plomberie')}}">Plomberie</a></li>
+                        <li><a href="{{ path('services_index') }}">Exploiter nos prestataires</a></li>
                     </ul>
                 </li>
                 <li class="has-children">
@@ -73,11 +75,26 @@
                         <li><a href="single-standard.html">Standard Post</a></li>
                     </ul>
                 </li>
-                <li><a href="style-guide.html" title="">Espace entreprise</a></li>
+                {#<li><a href="style-guide.html" title="">Espace entreprise</a></li>#}
 
                 <li><a href="{{ path('fixit_about') }}" title="">à propos</a></li>
 
-                <li><a href="{{ path('fixit_contact') }}" title="">Contact</a></li>
+                <a href="{{ path('fixit_contact') }}" title="">Contact</a>
+                {% if is_granted('ROLE_CLIENT') %}
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <li class="has-children">
+                <a href="{{ path('reclamation_index') }}" title="">Reclamation</a>
+
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <ul class="sub-menu">
+                    <li><a href="{{path('reclamation_new')}}">Faire une reclamation</a></li>
+                    <li><a href="{{path('reclamation_index')}}">Voir ma liste reclamation</a></li>
+
+                </ul>
+                </li>
+                {% endif %}
+                {% endif %}{% endif %}
+
                 {#f warka#}    {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                     <li><a href="{{ path('fos_user_security_login') }}" title="">se connecter</a></li>
 
@@ -87,9 +104,13 @@
 
 
                     <li><a href="{{ path('fos_user_profile_show') }}" title="">utilisateur: {{ app.user.username }}
+
                             <ul class="sub-menu">
-                                <li><a href="{{ path('fos_user_security_logout') }}" title="">se deconnecter</a></li>
+
                                 <li><a href="{{ path('fos_user_profile_show') }}" title="">Profile</a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}" title="">Déconnexion</a></li>
+
+
                             </ul>
                         </a>
 
@@ -98,7 +119,7 @@
 
                 {% endif %}
 
-
+                <li><a href="{{ path('opinon_ajout') }}" title="">Evaluez nous</a></li>
             </ul>
             <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
         </nav>

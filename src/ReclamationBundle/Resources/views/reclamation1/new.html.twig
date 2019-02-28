@@ -1,0 +1,121 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+
+
+
+        <style type="text/css" media="screen">
+            .s-styles {
+                background: #f0f0f0;
+                padding-top: 16.2rem;
+                padding-bottom: 12rem;
+            }
+
+            .s-styles .section-intro h1 {
+                margin-top: 0;
+            }
+            #reclamationbundle_reclamation_topic{
+                font-size: 2rem;
+
+            }
+        </style>
+
+
+    <body id="top">
+
+
+    <!-- styles
+    ================================================== -->
+    <section id="styles" class="s-styles">
+             <section class="row" >
+                <h1 class="add-bottom" >Reclamation</h1>
+                <div class="col-six tab-full">
+                    {{ form_start(form) }}
+                    <form class="full-width" novalidate>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="cl-custom-select">Select a topic <strong class='text-danger'>*</strong></label>
+                                    {{ form_widget(form.topic,{'attr':{'placeholder':'sujet','class':'form-control'}}) }}
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="full-width">
+                            <label for="help-message">Message <strong class='text-danger'>*</strong></label>
+
+                            {{ form_widget(form.message,{'attr':{'placeholder':'Message','class':'form-control'}}) }}
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+
+                                    <label for="help-name">Nom Prestataire: <strong class='text-danger'>*</strong></label>
+
+                                    {{ form_widget(form.user,{'attr':{'placeholder':'Prestataire','class':'form-control'}}) }}
+
+                                </div>
+                            </div>
+
+                        <button class="btn btn-primary mr-4" type="submit">Envoyer</button>
+                        {{ form_end(form) }}
+                    </form>
+                </div>
+
+
+                </div> <!-- end row -->
+
+
+
+
+        </div> <!-- end row -->
+
+    </section> <!-- end styles -->
+
+
+    <!-- s-extra
+    ================================================== -->
+    <section class="s-extra">
+
+        <div class="row">
+
+
+            <div class="col-four md-six tab-full end">
+                <div class="row">
+                    <div class="col-six md-six mob-full categories">
+                        <h3>Categories</h3>
+
+                        <ul class="linklist">
+                            <li><a href="#0">Lifestyle</a></li>
+                            <li><a href="#0">Travel</a></li>
+                            <li><a href="#0">Recipes</a></li>
+                            <li><a href="#0">Management</a></li>
+                            <li><a href="#0">Health</a></li>
+                            <li><a href="#0">Creativity</a></li>
+                        </ul>
+                    </div> <!-- end categories -->
+
+                    <div class="col-six md-six mob-full sitelinks">
+                        <h3>Site Links</h3>
+
+                        <ul class="linklist">
+                            <li><a href="#0">Home</a></li>
+                            <li><a href="#0">Blog</a></li>
+                            <li><a href="#0">Styles</a></li>
+                            <li><a href="#0">About</a></li>
+                            <li><a href="#0">Contact</a></li>
+                            <li><a href="#0">Privacy Policy</a></li>
+                        </ul>
+                    </div> <!-- end sitelinks -->
+                </div>
+            </div>
+        </div> <!-- end row -->
+
+    </section> <!-- end s-extra -->
+
+    </section>
+
+{% endblock %}

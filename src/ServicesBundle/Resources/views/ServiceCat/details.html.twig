@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!-- s-content
+================================================== -->
+<section class="s-content s-content--top-padding s-content--narrow">
+
+
+
+
+    <article class="row entry format-standard">
+
+        <div class="entry__media col-full">
+            <div class="entry__post-thumb">
+                <img src="{{ Service.categorie.image}}"
+                     sizes="(max-width: 2000px) 100vw, 2000px" alt="">
+            </div>
+        </div>
+
+        <div class="entry__header col-full">
+            <h1 class="entry__header-title display-1">
+                {{ Service.titre}}
+            </h1>
+            <h3>Nombre de vues :{{ Service.user.view}} </h3>
+            <ul class="entry__header-meta">
+                <li class="date">{% if Service.date %}{{ Service.date|date('Y-m-d') }}{% endif %}</li>
+                <li class="byline">
+                    By
+                    <a href="#0">{{ Service.user.nom }} {{ Service.user.prenom }} </a>
+                </li>
+                {% if  not is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                <li>{% if app.user.username==Service.user.username %}
+                    <a href="" style="color: #00a5f7"> <strong>Delete</strong></a><br></li>
+
+                   <li> <a href="" style="color: #00a5f7"><strong>Update</strong></a>
+
+
+
+                    {% endif %}</li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <div class="col-full entry__main">
+
+
+
+            <h2>{{ Service.titre}}</h2>
+
+
+            <blockquote><p>{{ Service.description}}</p></blockquote>
+
+
+
+            <div class="entry__taxonomies">
+                <div class="entry__cat">
+                    <h5>Posted In: </h5>
+                    <span class="entry__tax-list">
+                            <a href="{{ path('elec_show',{ 'cat': Service.categorie.libelle  }) }}"> {{ Service.categorie.libelle}} </a>
+
+                        </span>
+                </div> <!-- end entry__cat -->
+
+            </div> <!-- end s-content__taxonomies -->
+
+            <div class="entry__author">
+                <img src="http://localhost/FIX/web/images/avatar.jpg" alt="">
+
+                <div class="entry__author-about">
+                    <h5 class="entry__author-name">
+                        <span>Posted by</span>
+                        <i>{{ Service.user.nom }} {{ Service.user.prenom }}</i>
+                    </h5>
+
+                    <div class="entry__author-desc">
+                        <p>
+                            <b> Email:</b> {{ Service.user.email }}<br>
+                            <b>Numeros Tel: </b> {{ Service.telephone }}
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- s-entry__main -->
+
+    </article> <!-- end entry/article -->
+</section> <!-- end s-extra -->
+
+{% endblock %}
